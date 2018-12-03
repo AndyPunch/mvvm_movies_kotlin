@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="viewModel"
+                type="program.java.punch.andr.mvvm_movies_kotlin.ui.main.fragments.main.viewModel.FragmentMainViewModel" />
+
+    </data>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="28dp" xmlns:android="http://schemas.android.com/apk/res/android">
+
+                    </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                    android:id="@+id/list_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{viewModel.status}" xmlns:android="http://schemas.android.com/apk/res/android"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+                android:id="@+id/pb_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+                android:background="@color/colorWhite">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                    style="@style/Widget.MaterialProgressBar.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    app:mpb_indeterminateTint="@color/colorAccent"
+                    app:mpb_progressStyle="circular" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
